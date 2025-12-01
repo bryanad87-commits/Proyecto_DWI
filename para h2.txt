@@ -1,0 +1,30 @@
+1. Verifica que los usuarios existan en la base de datos:
+sql
+-- En H2 Console (http://localhost:8080/h2-console)
+SELECT * FROM USUARIO;
+2. Si la tabla está vacía, inserta los usuarios:
+sql
+INSERT INTO USUARIO (DNI, CLAVE, ROL, NOMBRES) 
+VALUES ('12345678', '12345', 'Administrador', 'Usuario Administrador');
+
+INSERT INTO USUARIO (DNI, CLAVE, ROL, NOMBRES) 
+VALUES ('23456789', '12345', 'Operador', 'Usuario Operador');
+3. Verifica las credenciales exactas:
+DNI: 12345678 (sin espacios)
+
+Clave: 12345 (sin espacios)
+
+4. Prueba el login directamente en Swagger:
+Ve a http://localhost:8080/swagger-ui.html y prueba:
+
+json
+{
+  "dni": "12345678",
+  "clave": "12345"
+}
+🔧 Si los usuarios ya existen, verifica:
+Que el backend esté corriendo (./gradlew bootRun)
+
+Que no hayas cambiado las claves accidentalmente
+
+Que estés usando DNI y clave correctos
